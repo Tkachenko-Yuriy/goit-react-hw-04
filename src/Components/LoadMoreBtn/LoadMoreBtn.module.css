@@ -1,0 +1,22 @@
+.loadMoreBtn {
+  margin-top: 30px;
+  border-radius: 8px;
+  background-color: inherit;
+  border: 1px solid rgb(129, 129, 129);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  transition-property: transform;
+}
+
+.loadMoreBtn:hover {
+  border-color: #fffc64;
+  transform: scale(1.2);
+  transition-duration: 500ms;
+}
+
+.loadMoreBtn:focus,
+.loadMoreBtn:focus-visible {
+  outline: none;
+}

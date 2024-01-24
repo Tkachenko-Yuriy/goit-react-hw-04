@@ -1,0 +1,19 @@
+[
+  { "category": "backgrounds", "color": "#AEC6CF" },
+  { "category": "fashion", "color": "#E6CCB2" },
+  { "category": "nature", "color": "#9BC995" },
+  { "category": "science", "color": "#B9B6E5" },
+  { "category": "feelings", "color": "#F3B3B2" },
+  { "category": "health", "color": "#FFDAB9" },
+  { "category": "people", "color": "#FFA07A" },
+  { "category": "places", "color": "#D5C295" },
+  { "category": "animals", "color": "#C2DFFF" },
+  { "category": "industry", "color": "#B0E57C" },
+  { "category": "food", "color": "#FAD02E" },
+  { "category": "sports", "color": "#FFC3A0" },
+  { "category": "auto", "color": "#E0BBE4" },
+  { "category": "travel", "color": "#BFD7EA" },
+  { "category": "buildings", "color": "#FFDEAD" },
+  { "category": "business", "color": "#A9A9A9" },
+  { "category": "music", "color": "#FFD700" }
+]

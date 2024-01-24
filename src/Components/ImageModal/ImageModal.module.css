@@ -1,0 +1,45 @@
+.container {
+  position: relative;
+  width: 1024px;
+}
+
+.modalButton {
+  position: absolute;
+  top: -15px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modalLikesIcon {
+  margin-right: 5px;
+  fill: #f82828;
+}
+.modalCloseIcon {
+  fill: #020202;
+}
+.description {
+  width: 1000px;
+  margin-bottom: 10px;
+  color: black;
+}
+.author {
+  margin: 5px 0px;
+  color: black;
+}
+.location {
+  margin: 0px 0px 5px;
+  color: black;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  color: black;
+}

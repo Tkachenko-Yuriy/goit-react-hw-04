@@ -1,0 +1,24 @@
+.filterButton {
+  margin-top: 15px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: inherit;
+  border: 1px solid rgb(129, 129, 129);
+  color: rgb(68, 68, 68);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  transition-property: transform;
+}
+
+.filterButton:hover {
+  border-color: #fffc64;
+  transform: scale(1.1);
+  transition-duration: 500ms;
+}
+
+.filterButton:focus,
+.filterButton:focus-visible {
+  outline: none;
+}

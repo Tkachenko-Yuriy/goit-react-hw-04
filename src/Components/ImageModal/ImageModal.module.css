@@ -27,13 +27,41 @@
   margin-bottom: 10px;
   color: black;
 }
+.wrapher {
+  margin-top: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.authorWrapher {
+  display: flex;
+  flex-direction: column;
+}
+.authorInfo {
+  display: flex;
+  margin-top: 10px;
+}
+
+.authorImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  border: 1px solid rgb(129, 129, 129);
+  margin-right: 5px;
+  overflow: hidden;
+}
 .author {
   margin: 5px 0px;
   color: black;
 }
+
 .location {
-  margin: 0px 0px 5px;
+  margin: 0px 0px 5px 36px;
   color: black;
+}
+
+.likesWraper {
+  margin-left: auto;
 }
 
 .likes {

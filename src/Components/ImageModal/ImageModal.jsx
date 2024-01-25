@@ -19,8 +19,21 @@ export default function ImageModal({ image, isOpen, onRequestClose }) {
   if (!image || !isOpen) {
     return null;
   }
-
+  // console.log(image.user.profile_image.small);
   const { alt_description, description, likes, urls, user } = image;
+
+  const sliceDescription = (description) => {
+    const secondDotIndex = description.indexOf(
+      ".",
+      description.indexOf(".") + 1
+    );
+
+    if (secondDotIndex !== -1) {
+      return description.slice(0, secondDotIndex + 1);
+    } else {
+      return description;
+    }
+  };
 
   return (
     <Modal
@@ -34,18 +47,31 @@ export default function ImageModal({ image, isOpen, onRequestClose }) {
           <IoIosCloseCircleOutline className={css.modalCloseIcon} />
         </button>
         <p className={css.description}>
-          {description ? description : alt_description}
+          {description ? sliceDescription(description) : alt_description}
         </p>
         <img
           src={urls.regular ? urls.regular : defaultImage}
           alt={alt_description}
         />
-        <p className={css.author}>{user.name}</p>
-        <p className={css.location}>{user.location}</p>
-        <p className={css.likes}>
-          {likes}
-          <FcLikePlaceholder className={css.modalLikesIcon} />
-        </p>
+        <div className={css.wrapher}>
+          <div className={css.authorWrapher}>
+            <div className={css.authorInfo}>
+              <img
+                className={css.authorImage}
+                src={user.profile_image.small}
+                alt=""
+              />
+              <p className={css.author}>{user.name}</p>
+            </div>
+            <p className={css.location}>{user.location}</p>
+          </div>
+          <div className={css.likesWraper}>
+            <p className={css.likes}>
+              {likes}
+              <FcLikePlaceholder className={css.modalLikesIcon} />
+            </p>
+          </div>
+        </div>
       </div>
     </Modal>
   );

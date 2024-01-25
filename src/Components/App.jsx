@@ -20,13 +20,15 @@ function App() {
   const [page, setPage] = useState(1);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState(null);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     async function fetchImages() {
       try {
         setLoading(true);
         const response = await fetchImagesFromUnsplash(query, page);
-        setImages((prevImages) => [...prevImages, ...response]);
+        setImages((prevImages) => [...prevImages, ...response.data.results]);
+        setTotalPages(response.data.total_pages);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -56,15 +58,17 @@ function App() {
     setPage(1);
   };
 
-  function openModal(image) {
+  const openModal = (image) => {
     setIsOpen(true);
     setModalImage(image);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
     setModalImage(null);
-  }
+  };
+
+  const shouldRenderGallery = images.length > 0 && !loading && !error;
 
   return (
     <>
@@ -82,11 +86,11 @@ function App() {
         </div>
       )}
       {error && <p className="error-message">Error: {error}</p>}
-      {images.length > 0 && !loading && !error && (
-        <>
-          <ImageGalleryList items={images} onClick={openModal} />
-          <LoadMoreBtn onClick={handleLoadMore}>Load More</LoadMoreBtn>
-        </>
+      {shouldRenderGallery && (
+        <ImageGalleryList items={images} onClick={openModal} />
+      )}
+      {shouldRenderGallery && page < totalPages && (
+        <LoadMoreBtn onClick={handleLoadMore}>Load More</LoadMoreBtn>
       )}
       {modalImage && modalIsOpen && (
         <ImageModal

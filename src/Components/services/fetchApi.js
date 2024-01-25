@@ -9,8 +9,7 @@ const fetchImagesFromUnsplash = async (query, page) => {
   const response = await axios.get(
     `/search/photos?client_id=${ACCESS_KEY}&query=${query}&page=${page}&per_page=${itemsPerPage}&orientation=landscape`
   );
-
-  return response.data.results;
+  return response;
 };
 
 export default fetchImagesFromUnsplash;

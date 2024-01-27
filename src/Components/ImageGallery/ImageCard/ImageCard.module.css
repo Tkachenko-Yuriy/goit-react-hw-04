@@ -1,14 +1,6 @@
-.photo-card__link {
-  display: flex;
-  justify-content: stretch;
-  text-decoration: none;
-  color: white;
-}
-
 .photoCard {
   display: flex;
   flex-direction: column;
-
   background-color: #64635c;
   border-radius: 10px;
 }

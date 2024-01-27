@@ -7,7 +7,7 @@ const FilteredList = ({ filter, onClick }) => {
       {filter.map(({ category }) => {
         return (
           <li className={css.item} key={category}>
-            <Button filter={category} onClick={onClick} />
+            <Button filter={category} onClick={() => onClick(category)} />
           </li>
         );
       })}

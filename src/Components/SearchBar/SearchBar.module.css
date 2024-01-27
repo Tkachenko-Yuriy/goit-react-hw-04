@@ -12,7 +12,6 @@
 .searchContainer {
   display: flex;
   align-items: center;
-  background-color: aliceblue;
   border-radius: 10px;
   background-color: #fff;
 }

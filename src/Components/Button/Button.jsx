@@ -1,7 +1,7 @@
 import css from "./Button.module.css";
 const Button = ({ filter, onClick }) => {
   return (
-    <button onClick={() => onClick(filter)} className={css.filterButton}>
+    <button onClick={onClick} className={css.filterButton}>
       {filter}
     </button>
   );

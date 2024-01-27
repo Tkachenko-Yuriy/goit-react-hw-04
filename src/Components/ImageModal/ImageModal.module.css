@@ -39,6 +39,7 @@
 }
 .authorInfo {
   display: flex;
+  align-items: center;
   margin-top: 10px;
 }
 
@@ -56,8 +57,14 @@
 }
 
 .location {
-  margin: 0px 0px 5px 36px;
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 5px 3px;
   color: black;
+}
+.locationIcon {
+  margin-right: 5px;
+  padding: 5px;
 }
 
 .likesWraper {

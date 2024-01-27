@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { IoLocationOutline } from "react-icons/io5";
 import css from "./ImageModal.module.css";
 import defaultImage from "../../assets/default_img.jpg";
 
@@ -19,8 +20,14 @@ export default function ImageModal({ image, isOpen, onRequestClose }) {
   if (!image || !isOpen) {
     return null;
   }
-  // console.log(image.user.profile_image.small);
-  const { alt_description, description, likes, urls, user } = image;
+
+  const {
+    alt_description,
+    description,
+    likes,
+    urls: { regular },
+    user: { name, profile_image, location },
+  } = image;
 
   const sliceDescription = (description) => {
     const secondDotIndex = description.indexOf(
@@ -46,32 +53,40 @@ export default function ImageModal({ image, isOpen, onRequestClose }) {
         <button className={css.modalButton} onClick={onRequestClose}>
           <IoIosCloseCircleOutline className={css.modalCloseIcon} />
         </button>
-        <p className={css.description}>
-          {description ? sliceDescription(description) : alt_description}
-        </p>
-        <img
-          src={urls.regular ? urls.regular : defaultImage}
-          alt={alt_description}
-        />
-        <div className={css.wrapher}>
-          <div className={css.authorWrapher}>
-            <div className={css.authorInfo}>
-              <img
-                className={css.authorImage}
-                src={user.profile_image.small}
-                alt=""
-              />
-              <p className={css.author}>{user.name}</p>
+        {regular && (
+          <p className={css.description}>
+            {description ? sliceDescription(description) : alt_description}
+          </p>
+        )}
+        <img src={regular ? regular : defaultImage} alt={alt_description} />
+        {regular && (
+          <div className={css.wrapher}>
+            <div className={css.authorWrapher}>
+              <div className={css.authorInfo}>
+                <img
+                  className={css.authorImage}
+                  src={profile_image.small}
+                  alt=""
+                />
+                {name && <p className={css.author}>{name}</p>}
+              </div>
+              {location && (
+                <p className={css.location}>
+                  <IoLocationOutline className={css.locationIcon} />
+                  {location}
+                </p>
+              )}
             </div>
-            <p className={css.location}>{user.location}</p>
+            <div className={css.likesWraper}>
+              {likes && (
+                <p className={css.likes}>
+                  {likes}
+                  <FcLikePlaceholder className={css.modalLikesIcon} />
+                </p>
+              )}
+            </div>
           </div>
-          <div className={css.likesWraper}>
-            <p className={css.likes}>
-              {likes}
-              <FcLikePlaceholder className={css.modalLikesIcon} />
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </Modal>
   );

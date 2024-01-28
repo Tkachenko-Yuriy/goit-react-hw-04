@@ -5,6 +5,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import css from "./ImageModal.module.css";
 import defaultImage from "../../assets/default_img.jpg";
 
+Modal.setAppElement("#root");
+
 const customStyles = {
   content: {
     top: "50%",

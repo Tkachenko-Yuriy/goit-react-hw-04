@@ -9,6 +9,12 @@ export default function SearchBar({ onSubmit }) {
     const query = form.elements.query.value.trim();
     if (query === "") {
       toast.error("Please enter a search query.");
+      form.reset();
+      return;
+    }
+    if (query.length < 3) {
+      toast.error("Please enter a longer search term.");
+      form.reset();
       return;
     }
     onSubmit(query);

@@ -7,7 +7,7 @@ const itemsPerPage = 20;
 
 const fetchImagesFromUnsplash = async (query, page) => {
   const response = await axios.get(
-    `/search/photos?client_id=${ACCESS_KEY}&query=${query}&page=${page}&per_page=${itemsPerPage}&orientation=landscape`
+    `/search/photos?client_id=${ACCESS_KEY}&query=${query}&page=${page}&per_page=${itemsPerPage}&orientation=landscape&lang=uk&lang=en`
   );
   return response;
 };

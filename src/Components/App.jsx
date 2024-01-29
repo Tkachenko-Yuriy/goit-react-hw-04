@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
+import toast, { Toaster } from "react-hot-toast";
 import InfiniteScroll from "react-infinite-scroll-component";
 import fetchImagesFromUnsplash from "./services/fetchApi";
 import SearchBar from "./SearchBar/SearchBar";
@@ -15,7 +16,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-
+  const [pageLoaded, setPageLoaded] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
@@ -23,6 +24,10 @@ function App() {
       try {
         setLoading(true);
         const response = await fetchImagesFromUnsplash(query, page);
+        if (response.data.total === 0 && pageLoaded) {
+          toast.error("Nothing was found for your request.");
+      return;
+        }
         if (page === 1) {
           setImages(response.data.results);
         } else {
@@ -33,6 +38,7 @@ function App() {
         setError(error.message);
       } finally {
         setLoading(false);
+        setPageLoaded(true);
       }
     }
 

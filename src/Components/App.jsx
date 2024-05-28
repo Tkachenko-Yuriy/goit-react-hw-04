@@ -55,13 +55,14 @@ function App() {
     setPage(1);
   };
 
-  const shouldRenderGallery = images.length > 0 && !error;
+  // const shouldRenderGallery = images.length > 0 && !error;
+  const shouldRenderGallery = true;
 
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
       <FilteredList filter={categories} onClick={handleFiltered} />
-      {error && <p className="error-message">Error: {error}</p>}
+{/*       {error && <p className="error-message">Error: {error}</p>} */}
       <InfiniteScroll
         dataLength={images.length}
         next={()=>setPage((prevPage) => prevPage + 1)}
